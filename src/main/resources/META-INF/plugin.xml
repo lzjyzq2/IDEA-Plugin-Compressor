@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>cn.settile.lzjyzq2.compressor</id>
+    <name>Compressor</name>
+    <vendor email="lzjyzq2@hotmail.com" url="http://www.settile.cn">lzjyzq2</vendor>
+
+    <description><![CDATA[
+    This plugin can compress your selected content and generate configuration files to facilitate the same compression again later.
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+    <idea-version since-build="191" />
+    <actions>
+        <!-- Add your actions here -->
+        <action id="sl.do.compress" class="cn.settile.lzjyzq2.compressor.action.CompressAction" text="压缩"
+                description="将选定的文件或文件夹进行压缩">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="CutCopyPasteGroup"/>
+        </action>
+    </actions>
+</idea-plugin>

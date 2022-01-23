@@ -1,0 +1,33 @@
+JFDML JFormDesigner: "7.0.5.2.410" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :::p, par t {comp scrollPane1::::388:x, seq {comp label1:::p::p, space :::p, comp outputPathEditor::::306:x, space :::p, comp chooseOutputBtn:::p:30:p}}, space :::p}}"
+			"$verticalGroup": "par l {seq {space :7:7:p, par l {seq l {par l {comp outputPathEditor:::::x, comp label1:::::x}, space :::p, comp scrollPane1::::267:x, space :::p}, seq t {comp chooseOutputBtn::::0:x, space :279:279:p}}}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Output"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "chooseOutputBtn"
+				"text": "..."
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "com.intellij.ui.treeStructure.Tree" ) {
+					name: "outputTree"
+				} )
+			} )
+			add( new FormComponent( "com.intellij.ui.EditorTextField" ) {
+				name: "outputPathEditor"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 315 )
+		} )
+	}
+}
