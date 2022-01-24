@@ -47,7 +47,7 @@ public class CompressDialog extends DialogWrapper {
 
     @Override
     protected Action @NotNull [] createActions() {
-        return new Action[]{new CompressAndGenerateAction(),new CompressAction(),new OptionAction(),new GenerateAction()};
+        return new Action[]{new OptionAction(),new GenerateAction(),new CompressAction(),new CompressAndGenerateAction()};
     }
 
     /**
@@ -86,7 +86,7 @@ public class CompressDialog extends DialogWrapper {
     protected class OptionAction extends DialogWrapper.DialogWrapperAction {
 
         protected OptionAction() {
-            super("生成");
+            super("配置");
         }
 
         @Override
@@ -101,7 +101,7 @@ public class CompressDialog extends DialogWrapper {
     protected class CompressAndGenerateAction extends DialogWrapper.DialogWrapperAction {
 
         protected CompressAndGenerateAction() {
-            super("生成");
+            super("压缩并生成");
         }
 
         @Override
