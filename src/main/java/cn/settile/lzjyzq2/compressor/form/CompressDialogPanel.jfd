@@ -16,7 +16,7 @@ new FormModel {
 				name: "chooseOutputBtn"
 				"text": "..."
 			} )
-			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+			add( new FormContainer( "com.intellij.ui.components.JBScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "com.intellij.ui.treeStructure.Tree" ) {
 					name: "outputTree"

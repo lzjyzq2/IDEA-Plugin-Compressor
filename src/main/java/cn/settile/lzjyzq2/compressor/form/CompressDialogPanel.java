@@ -9,6 +9,7 @@ import javax.swing.GroupLayout;
 
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.*;
+import com.intellij.ui.components.*;
 import com.intellij.ui.treeStructure.*;
 
 /**
@@ -32,7 +33,7 @@ public class CompressDialogPanel extends JPanel {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
         chooseOutputBtn = new JButton();
-        scrollPane1 = new JScrollPane();
+        scrollPane1 = new JBScrollPane();
         outputTree = new Tree();
         outputPathEditor = new EditorTextField();
 
@@ -87,7 +88,7 @@ public class CompressDialogPanel extends JPanel {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
     private JButton chooseOutputBtn;
-    private JScrollPane scrollPane1;
+    private JBScrollPane scrollPane1;
     private Tree outputTree;
     private EditorTextField outputPathEditor;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
