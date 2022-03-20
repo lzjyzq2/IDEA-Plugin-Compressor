@@ -13,12 +13,18 @@ import com.intellij.ui.components.*;
 import com.intellij.ui.treeStructure.*;
 
 /**
- * @author unknown
+ * @author lzjyzq2
  */
 public class CompressDialogPanel extends JPanel {
 
+    /**
+     * 目标目录
+     */
     private VirtualFile targetFile;
 
+    /**
+     * 预览文件目录树
+     */
     private CollectionListModel<String> treeModel = null;
 
     public CompressDialogPanel() {
