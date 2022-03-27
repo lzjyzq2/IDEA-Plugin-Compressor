@@ -12,7 +12,8 @@ repositories {
 
 dependencies {
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.2"
-
+    implementation 'org.apache.commons:commons-compress:1.21'
+    implementation 'cn.hutool:hutool-core:5.7.22'
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
