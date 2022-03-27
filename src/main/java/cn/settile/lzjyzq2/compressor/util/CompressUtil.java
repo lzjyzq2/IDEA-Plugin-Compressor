@@ -1,12 +1,14 @@
 package cn.settile.lzjyzq2.compressor.util;
 
 import cn.settile.lzjyzq2.compressor.model.*;
+import com.github.hypfvieh.util.CompressionUtil;
 
 import javax.annotation.Nonnull;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CompressUtil {
 
@@ -64,9 +66,7 @@ public class CompressUtil {
 
     private void convertFilters(List<Filter> filters) {
         if (filters != null) {
-            filters.forEach(filter -> {
-                filterCache.put(filter.getId(), filter);
-            });
+            filters.forEach(filter -> filterCache.put(filter.getId(), filter));
         }
     }
 
@@ -94,6 +94,7 @@ public class CompressUtil {
 
     }
 
+
     public List<Filter> getFiltersWithOut(Out out) {
         List<Filter> filters = new LinkedList<>();
         Filter filter = filterCache.get(out.getId());
@@ -108,9 +109,7 @@ public class CompressUtil {
 
     private void convertToPathFilters() {
         pathFilters.clear();
-        filterCache.values().forEach(filter -> {
-            pathFilters.put(filter, getFilterDir(filter));
-        });
+        filterCache.values().forEach(filter -> pathFilters.put(filter, getFilterDir(filter)));
     }
 
     public String getFilterDir(Filter filter) {
@@ -134,7 +133,7 @@ public class CompressUtil {
         }
         pathList.add(folderNode.getSources().getSrc());
         Collections.reverse(pathList);
-        return String.join(File.separator, pathList);
+        return pathList.stream().collect(Collectors.joining(File.separator, "", File.separator));
     }
 
     public void release() {
