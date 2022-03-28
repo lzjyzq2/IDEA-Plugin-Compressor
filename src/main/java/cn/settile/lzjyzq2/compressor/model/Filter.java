@@ -37,17 +37,19 @@ public class Filter {
     @JacksonXmlProperty(isAttribute = true, localName = "includesFolder")
     private boolean includesFolder = true;
 
+    private FilterType filterType = FilterType.FILTER;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Filter filter = (Filter) o;
-        return includesFile == filter.includesFile && includesFolder == filter.includesFolder && Objects.equals(id, filter.id) && Objects.equals(regex, filter.regex) && Objects.equals(excludeRegex, filter.excludeRegex);
+        return includesFile == filter.includesFile && includesFolder == filter.includesFolder && Objects.equals(id, filter.id) && Objects.equals(regex, filter.regex) && Objects.equals(excludeRegex, filter.excludeRegex) && filterType == filter.filterType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, regex, excludeRegex, includesFile, includesFolder);
+        return Objects.hash(id, regex, excludeRegex, includesFile, includesFolder, filterType);
     }
 
     public Sources getSources() {
@@ -104,5 +106,13 @@ public class Filter {
 
     public void setExcludeRegex(String excludeRegex) {
         this.excludeRegex = excludeRegex;
+    }
+
+    public FilterType getFilterType() {
+        return filterType;
+    }
+
+    public void setFilterType(FilterType filterType) {
+        this.filterType = filterType;
     }
 }

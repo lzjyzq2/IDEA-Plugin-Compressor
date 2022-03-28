@@ -37,10 +37,11 @@ public class CompressUtil {
                 Filter filter = new Filter();
                 filter.setParent(fileNode.getParent());
                 filter.setSources(filter.getSources());
-                filter.setRegex("^" + fileNode.getName() + "$");
+                filter.setRegex(fileNode.getName());
                 filter.setId(fileNode.getId());
                 filter.setIncludesFile(true);
                 filter.setIncludesFolder(false);
+                filter.setFilterType(FilterType.FILE);
                 filterCache.put(fileNode.getId(), filter);
             });
         }
@@ -52,13 +53,14 @@ public class CompressUtil {
                 Filter filter = new Filter();
                 filter.setParent(folderNode.getParent());
                 filter.setSources(filter.getSources());
-                filter.setRegex("^" + folderNode.getName() + "$");
+                filter.setRegex(folderNode.getName());
                 filter.setId(folderNode.getId());
                 filter.setIncludesFile(false);
                 filter.setIncludesFolder(true);
                 convertFileNodes(folderNode.getFileNodes());
                 convertFilters(folderNode.getFilters());
                 convertFolderNodes(folderNode.getFolderNodes());
+                filter.setFilterType(FilterType.FOLDER);
                 filterCache.put(folderNode.getId(), filter);
             });
         }
@@ -80,7 +82,7 @@ public class CompressUtil {
         }
         File tmpDirFile = Paths.get(tmpDir).toFile();
         if (!tmpDirFile.isDirectory()) {
-            throw new RuntimeException("\"" + tmpDir + "\"不是文件夹");
+            throw new RuntimeException("[" + tmpDir + "]不是文件夹");
         }
         if (!tmpDirFile.exists()) {
             if (!tmpDirFile.mkdir()) {
@@ -94,13 +96,20 @@ public class CompressUtil {
 
     }
 
+    private void copyOut(Out out) {
+        if (out.getId() != null && !out.getId().isBlank()) {
+            Filter outFilter = filterCache.get(out.getId());
+
+        }
+    }
+
 
     public List<Filter> getFiltersWithOut(Out out) {
         List<Filter> filters = new LinkedList<>();
         Filter filter = filterCache.get(out.getId());
         String dirPath = getFilterDir(filter);
         pathFilters.forEach(((filterKey, s) -> {
-            if (dirPath.contains(s)) {
+            if (dirPath.contains(s) && filterKey.getFilterType().equals(FilterType.FILTER)) {
                 filters.add(filterKey);
             }
         }));
